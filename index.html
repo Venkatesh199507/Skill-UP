@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  
+  <!--font awesome cdn-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <style>
+    body {
+      padding-top: 70px;
+      
+    }
+
+    .navbar {
+      background-color: rgb(225, 225, 225);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    
+    .c-img {
+      height: 500px !important;
+      object-fit: fill !important;
+    }
+
+    .testimonial-carousel {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .testimonial-slide {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .testimonial-slide img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .cp,
+    .cn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .cpi,
+    .cpi {
+      color: #fff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .course-card {
+      scroll-margin-top: 70px;
+      /* Height of the navbar */
+      /* Additional styling as needed */
+    }
+
+    /* Background animation for the card section */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .background {
+      background: linear-gradient(270deg,
+          #f4111971,
+          #06ee4c6c,
+          #f39edb,
+          #92b2e9,
+          #f6d365,
+          #fda085);
+      background-size: 400% 400%;
+      animation: gradientAnimation 8s ease infinite;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .card {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .card-img-top {
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-top {
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+    }
+
+    .card-title,
+    .card-text {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      align-self: flex-start;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .card:hover .btn {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    .card-img-top {
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title,
+    .card-text {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      align-self: flex-start;
+    }
+
+    .background .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .enroll-div {
+            display: none; /* Hidden by default */
+            margin-top: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+    }
+
+
+
+    .news-ticker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #f0f0f0;
+  padding: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.ticker-content {
+  display: inline-block;
+  padding-left: 100%; /* Start off-screen */
+  animation: ticker 60s linear infinite;
+}
+
+.ticker-content span {
+  margin-right: 40px; /* Space between messages */
+  font-size: 1.2rem;
+  color: #333;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%); /* Start from the right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to the left */
+  }
+}
+
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" >
+    <div class="container-fluid" id="home">
+      <a class="navbar-brand fw-bold fs-4" href="#home">SkillUp
+        <img src="https://media.tenor.com/U4P5tzHQHdkAAAAj/up-arrow.gif" style="width:50px " class="rounded-circle" >
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active fs-5" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active fs-5" href="#courses-section" role="button"
+              data-bs-toggle="dropdown" data-bs-auto-close="outside"> Courses</a>
+            <ul class="dropdown-menu">
+              <li class="dropend">
+                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#courses-section">Web
+                  Development</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <a href="#" class="dropdown-item" onclick="filterCourse('python-card')">Python Developer</a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a href="#" class="dropdown-item" onclick="filterCourse('java-card')">Java Developer</a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a href="#" class="dropdown-item" onclick="filterCourse('mern-card')">MERN Stack</a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a href="#" class="dropdown-item" onclick="filterCourse('mean-card')">MEAN Stack</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('machine-learning-card')">Machine Learning</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('iot-card')">IoT(Internet of Things)</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('data-science-card')">Data Science</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('cloud-computing-card')">Cloud Computing</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('cyber-security-card')">Cyber Security</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('networking-card')">Networking</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('digital-marketing-card')">Digital Marketing</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="filterCourse('3d-animation-card')">3D-Animation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5" href="#" data-bs-toggle="modal" data-bs-target="#conmod">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5" href="#about" data-bs-toggle="modal" data-bs-target="#aboutUsModal">About
+              Us</a>
+          </li>
+        </ul>
+        <div class="container" style="width: 470px; margin: auto">
+          <form class="d-flex" role="search" >
+            <input class="form-control me-auto" type="search" id="searchInput" onkeyup="searchCourse()" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" style="margin-left: 25px"  type="submit">
+             <a style="text-decoration:solid;" href="#courses-section">Search</a> 
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="ms-auto d-flex c-log">
+        <div class="nav-item me-3">
+          <a href="#" class="nav-link text-black" data-bs-toggle="modal"  data-bs-target="#loginModal">Log In</a>
+        </div>
+        <div class="nav-item me-3">
+          <a href="#" class="nav-link text-Black" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel slider -->
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+    <div class="carousel-inner" style="object-fit: cover">
+      <div class="carousel-item slide active">
+        <img src="https://t3.ftcdn.net/jpg/04/90/29/78/360_F_490297879_ypwN8ocG0xm2pnNl3N2EPXjYyjahb5c2.jpg"
+          class="c-img d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item slide">
+        <img
+          src="https://media.istockphoto.com/id/1439425791/photo/digital-technology-software-development-concept-coding-programmer-working-on-laptop-with.jpg?s=612x612&w=0&k=20&c=43WZfDZcnI2lULx83NVAtFiGyzKHzi4HyLqYZgggX-c="
+          class="c-img d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item slide">
+        <img src="https://cambriaschool.com/wp-content/uploads/2022/08/960x0.jpeg" class="c-img d-block w-100"
+          alt="..." />
+      </div>
+      <div class="carousel-item slide ">
+        <img
+          src="https://transform.octanecdn.com/crop/1600x650/https://octanecdn.com/surelocktechnologycom/surelocktechnologycom_794511046.jpg"
+          class="c-img d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item slide">
+        <img src="https://img.freepik.com/free-photo/person-front-computer-working-html_23-2150040428.jpg"
+          class="c-img d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item slide">
+        <img
+          src="https://nielit.gov.in/aurangabad/aurangabad/aurangabad/sites/default/files/Aurangabad/Iot-pictures-hd.jpg"
+          class="c-img d-block w-100" alt="..." />
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+
+  <div class="news-ticker">
+    <div class="ticker-content">
+      <!-- <span>🎉 Congratulations to [Student Name] for topping the [Course Name]! 🎉</span>
+      <span>🌟 [Student Name] scored 95% in [Course Name]! 🌟</span>
+      <span>🏆 [Student Name] is the topper of the month! 🏆</span>
+      <span>🎉 Congratulations to [Student Name] for topping the [Course Name]! 🎉</span>
+      <span>🌟 [Student Name] scored 95% in [Course Name]! 🌟</span>
+      <span>🏆 [Student Name] is the topper of the month! 🏆</span>
+      <span>🎉 Congratulations to [Student Name] for topping the [Course Name]! 🎉</span>
+      <span>🌟 [Student Name] scored 95% in [Course Name]! 🌟</span>
+      <span>🏆 [Student Name] is the topper of the month! 🏆</span> -->
+
+      <span>🎉 Congratulations to john for topping the Python! 🎉</span>
+      <span>🌟 Raja scored 95% in java! 🌟</span>
+      <span>🏆 Shiva is the topper of the month! 🏆</span>
+      <span>🎉 Congratulations to Raju for topping the Machine Learning! 🎉</span>
+      <span>🌟 Kayal scored 95% in Python! 🌟</span>
+      <span>🏆 Ram is the topper of the month! 🏆</span>
+      <span>🎉 Congratulations to Jane for topping the 3D Animation! 🎉</span>
+      <span>🌟 Madhu scored 95% in MERN Stack! 🌟</span>
+      <span>🏆 Kavi is the topper of the month! 🏆</span>
+    </div>
+  </div>
+  <br>
+  <!-- Carousel ends -->
+
+  <div class="container">
+    <h2 style="font-size: 40pt">
+      Explore Our Top Programs
+    </h2>
+    <p style="color: rgb(219, 175, 1); font-size: 30pt; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Join 8 Million Learners Who Trust Learning with Us</p>
+  </div>
+  <br /><br />
+
+  <!-- Courses -->
+  
+    <div id="courses-section" class="background row row-cols-1 row-cols-sm-4 mt-1">
+      <div class="col mb-4" id="python-card">
+        <div class="card d-flex justify-content-center align-items-center">
+          <img class="card-img-top" style="height: 100px; width: 100px"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1z0LC70CF3lPE1Xe-Uka4Y5sSlLzrAVHCQg&s"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Python</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll2">Enroll Now</button>
+
+         <!-- Enrollment Model -->
+            <div id="enroll2" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="java-card">
+        <div class="card d-flex justify-content-center align-items-center">
+          <img style="height: 100px; width: 100px"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYZCD0EEFjOZxrn9M4yODPcbwtp37ChlSAYQ&s"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Java</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll13">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll13" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="mern-card">
+        <div class="card d-flex justify-content-center align-items-center">
+          <img src="https://www.guvi.in/blog/wp-content/uploads/2024/05/1-1.webp" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">MERN Stack</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll12">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll12" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="mean-card">
+        <div class="card">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoB9APHpV91toqCD-XeViA0lYYlQsUtsvgdiWfKqQX4WQ5x4LVkB4Tqg7LBY-KRQhzObg&usqp=CAU"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">MEAN Stack</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll11">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll11" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="machine-learning-card">
+        <div class="card">
+          <img src="https://img.freepik.com/premium-vector/machine-learning-banner_35632-100.jpg" class="card-img-top"
+            alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Machine Learning</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll10">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll10" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="iot-card">
+        <div class="card">
+          <img src="https://p.kindpng.com/picc/s/255-2551105_internet-transparent-thing-internet-of-things-iot-hd.png"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">IoT(Internet of Things)</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll9">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll9" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="data-science-card">
+        <div class="card">
+          <img src="https://img.freepik.com/free-vector/illustration-data-analysis-graph_53876-18131.jpg"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Data Science</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll8">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll8" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="cloud-computing-card">
+        <div class="card">
+          <img src="https://www.trainingint.com/wp-content/uploads/cloud-computing-courses-singapore.jpg"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Cloud Computing</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll7">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll7" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="cyber-security-card">
+        <div class="card">
+          <img
+            src="https://st2.depositphotos.com/1140262/6318/i/450/depositphotos_63185655-stock-photo-social-networking-and-cyber-security.jpg"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Cyber Security</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll6">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll6" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="networking-card">
+        <div class="card">
+          <img src="https://t4.ftcdn.net/jpg/00/72/18/03/360_F_72180347_NTfdClV3UZL2xTRnMTGogY5z2vHyp722.jpg"
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Networking</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll5">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll5" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="digital-marketing-card">
+        <div class="card">
+          <img
+            src="https://media.istockphoto.com/id/1443560890/photo/digital-marketing-business-technology-concept-website-advertisement-email-social-media.jpg?s=612x612&w=0&k=20&c=S7d_Mof_fEsM69inW540APogoXkz-eA23XE1AIhTaBA="
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Digital Marketing</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll4">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll4" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" id="3d-animation-card">
+        <div class="card">
+          <img
+            src="https://media.istockphoto.com/id/1356598853/photo/anonymous-content-creator-rendering-3d-model.jpg?s=612x612&w=0&k=20&c=C0flOcbClqNYsZ6_mCxdUW95C1CCLsRRjsGLh9UNLgY="
+            class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">3D-Animation</h5>
+            <p class="card-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <button class="btn btn-primary enroll-btn" data-target="enroll3">Enroll Now</button>
+            <!-- Enrollment Model -->
+            <div id="enroll3" class="enroll-div">
+              <h5>Enroll for Course 2</h5>
+              <form>
+                  <div class="mb-2">
+                      <label class="form-label">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                  </div>
+                  <div class="mb-2">
+                      <label class="form-label">Email ID</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" required>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger close-btn">Close</button>
+              </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="testimonial-slide">
+                  <img data-bs-toggle="tooltip" data-bs-placement="top" title="Developer" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Testimonial 1"
+                    class="rounded-circle" />
+                  <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, atque esse. Ipsum facilis alias fuga delectus suscipit sed laboriosam doloribus corrupti a, deserunt unde reiciendis labore ducimus at sunt veniam!"
+                  </p>
+                  <p><strong>Santhoshkumar</strong>, Educator</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial-slide">
+                  <img data-bs-toggle="tooltip" data-bs-placement="top" title="Developer" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Testimonial 1"
+                  class="rounded-circle" />
+                  <p>
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum praesentium soluta, amet esse quisquam aliquid atque nisi. Exercitationem ex sit perferendis ducimus aliquid eveniet, minus recusandae, error pariatur perspiciatis corporis!."
+                  </p>
+                  <p><strong>Venkatesh</strong>, Educator</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial-slide">
+                  <img data-bs-toggle="tooltip" data-bs-placement="top" title="Developer" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonial 2"
+                    class="rounded-circle" />
+                  <p>
+                    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam debitis velit, deleniti fugit ad incidunt porro molestiae sint inventore totam explicabo, est illo dolorum minus quia unde corrupti, asperiores consectetur!."
+                  </p>
+                  <p><strong>Bhuvaneswari</strong>, Educator</p>
+                </div>
+              </div>
+              <!-- Add more testimonial items as needed -->
+            </div>
+            <div class="text-center">
+              <button class="carousel-control-prev cp" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon cpi" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next cn" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon cni" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <!-- Footer -->
+      <footer class="text-center text-lg-start text-white" style="background-color: #2a2a2a">
+        <!-- Grid container -->
+        <div class="container p-5 pb-0">
+          <!-- Section: Links -->
+          <section class="">
+            <!--Grid row-->
+            <div class="row">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">
+                  SkillUp
+                </h6>
+                <p>
+                  SkillUp is the popular online Bootcamp & online courses learning platform that offers the industry's best PGPs, Master's, and Live Training.
+                </p>
+              </div>
+              <!-- Grid column -->
+              <hr class="w-100 clearfix d-md-none" />
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Courses</h6>
+                <p>
+                  <a class="text-white">Wen development</a>
+                </p>
+                <p>
+                  <a class="text-white">Machine Learning</a>
+                </p>
+                <p>
+                  <a class="text-white">Networking</a>
+                </p>
+                <p>
+                  <a class="text-white">3D-Animation</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+              <hr class="w-100 clearfix d-md-none" />
+              <!-- Grid column -->
+              <hr class="w-100 clearfix d-md-none" />
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                <p><i class="fa-solid fa-location-dot"></i> Chennai, TN</p>
+                <p><i class="fas fa-envelope mr-3"></i> Skillupinfo@gmail.com</p>
+                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+              </div>
+              <!-- Grid column -->
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+                <!-- Facebook -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+                <!-- Twitter -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+                <!-- Google -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button" ><i class="fab fa-google"></i></a>
+                <!-- Instagram -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i ></a>
+                <!-- Linkedin -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Github -->
+                <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+            <!--Grid row-->
+          </section>
+          <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)"> &copy;2025 Copyright:
+          <a class="text-white" href="index-1.html">SkillUp.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </div>
+    <!-- contact model -->
+    <div class="modal fade" id="conmod">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title"></h1>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <!-- Contact Details -->
+              <div class="col-md-6">
+                <h5>Our Location</h5>
+                <div class="ratio ratio-16x9">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248756.07885882704!2d80.20867324999999!3d13.04752545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1740475007943!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <h5 class="mt-3">Contact Info</h5>
+                <p><strong>Phone:</strong> + 01 234 567 88</p>
+                <p><strong>Email:</strong> Skillupinfo@gmail.com</p>
+              </div>
+
+              <!-- Contact Form -->
+
+              <div class="col-md-6">
+                <h5>Send Us a Message</h5>
+                <form>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Write your message"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary w-100">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Us Modal -->
+    <div class="modal fade" id="aboutUsModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">About Us</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h3>Welcome to SkillUp</h3>
+            <p>We are a team of passionate individuals dedicated to providing the best services. Our commitment to
+              quality and innovation drives our success.</p>
+            <h5>Our Mission</h5>
+            <p>To deliver top-notch solutions that exceed customer expectations.</p>
+            <h5>Our Vision</h5>
+            <p>To be a leader in the industry, setting standards for excellence.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Register Modal -->
+<div class="modal fade form-check " id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+      <div class="modal-content ">
+          <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Registration Form</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-3">
+                      <label for="name" class="form-label" id="label-name1"> Name</label>
+                      <input type="text" class="form-control cus-inp" id="name" placeholder="Enter your Username">
+                  </div>
+                  <div class="mb-3">
+                    <label for="mail" class="form-label" id="label-mail"> Mail Id</label>
+                    <input type="text" class="form-control cus-inp" id="mail" placeholder="Enter your Mail Id">
+                </div>
+                <div class="mb-3">
+                  <label for="phnum" class="form-label" id="label-num"> Phone Number</label>
+                  <input type="text" class="form-control cus-inp" id="phnum" placeholder="Enter your Phone number">
+              </div>
+                  <div class="mb-3">
+                      <label for="password" class="form-label" id="label-pass">Password</label>
+                      <input type="password" class="form-control cus-inp" id="password" placeholder="Enter your Password">
+                  </div>             
+                  <button type="submit" class="btn btn-primary w-100">Register</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+    <!-- Log In Model -->
+    <div class="modal fade" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title" id="loginModalLabel">Log In Form</h1>
+            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" id="label-name" class="form-label">User Name</label>
+                <input type="text" class="form-control custom-input" placeholder="Enter your User Name">
+              </div>
+              <div class="mb-3">
+                <label for="password" id="label-pass" class="form-label">Password</label>
+                <input type="password" class="form-control custom-input" id="password"
+                  placeholder="Enter your Password">
+              </div>
+              <button type="submit" class="btn btn-success w-100">Log In</button>
+            </form>
+          </div>
+        </div>
+
+          
+        <script>
+          function filterCourse(courseId) {
+            // Hide all course cards
+            const allCards = document.querySelectorAll(".background .col");
+            allCards.forEach((card) => {
+              card.style.display = "none";
+            });
+
+            // Show the selected course card
+            const selectedCard = document.getElementById(courseId);
+            if (selectedCard) {
+              selectedCard.style.display = "block";
+            }
+          }
+         
+
+          
+
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+              anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+                const yOffset = -70; // Adjust this value according to your navbar's height
+                const yPosition =
+                  targetElement.getBoundingClientRect().top +
+                  window.pageYOffset +
+                  yOffset;
+
+                window.scrollTo({
+                  top: yPosition,
+                  behavior: "smooth",
+                });
+
+                // Call the filterCourse function if needed
+                const courseId = this.getAttribute("onclick").match(/'([^']+)'/)[1];
+                filterCourse(courseId);
+              });
+            });
+
+
+
+    function searchCourse() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+       const allCards = document.querySelectorAll(".background .col");
+
+      allCards.forEach((card) => {
+        const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+        if (cardTitle.includes(searchTerm)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+    
+    document.querySelectorAll(".enroll-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let targetId = this.getAttribute("data-target");
+            let enrollDiv = document.getElementById(targetId);
+            enrollDiv.style.display = "block";
+        });
+    });
+
+    document.querySelectorAll(".close-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            this.closest(".enroll-div").style.display = "none";
+        });
+    });
+
+
+
+// Example data (replace with your actual data)
+// const toppers = [
+//   "🎉 Congratulations to John Doe for topping the Python Programming course! 🎉",
+//   "🌟 Jane Smith scored 95% in Data Science! 🌟",
+//   "🏆 Alice Johnson is the topper of the month! 🏆",
+//   "🎉 Congratulations to John  for topping the Python Programming course! 🎉",
+//   "🎉 Congratulations to  Doe for topping the Python Programming course! 🎉",
+//   "🌟  Smith scored 95% in Data Science! 🌟",
+//   "🏆 Alice  is the topper of the month! 🏆",
+//   "🎉 Congratulations to John Doe for topping the Python Programming course! 🎉",
+//   "🎉 Congratulations to John Doe for topping the Python Programming course! 🎉",
+//   "🌟 Jane  scored 95% in Data Science! 🌟",
+//   "🏆  Johnson is the topper of the month! 🏆",
+//   "🎉 Congratulations to JoDoe for topping the Python Programming course! 🎉",
+
+// ];
+
+// // Function to update the ticker
+// function updateTicker() {
+//   tickerContent.innerHTML = toppers
+//     .map((message) => `<span>${message}</span>`)
+//     .join('');
+// }
+
+// // Call the function to initialize the ticker
+// updateTicker();
+
+// // Optional: Add new messages dynamically
+// setInterval(() => {
+//   const newMessage = `🎉 New topper: [Student Name] in [Course Name]! 🎉`;
+//   toppers.push(newMessage);
+//   updateTicker();
+// }, 1000); // Add a new message every 10 seconds    
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"crossorigin="anonymous"></script>
+          
+</body>
+
+</html>
